@@ -1,0 +1,63 @@
+{
+  "slogan": "Seu Hub de promoções! TESTE!!!",
+  "titulosDestaque": [
+    "Eletrônicos Produtos com Descontos!!",
+    "Casa e Cozinha!!"
+  ],
+  "h2Ofertas": [
+    "Ofertas 01",
+    "Ofertas 02",
+    "Ofertas 03",
+    "Ofertas 04",
+    "Ofertas 05",
+    "Ofertas 06",
+    "Ofertas 07",
+    "Ofertas 08"
+  ],
+  "menus": [
+    "Eletrônicos",
+    "Software",
+    "Casa",
+    "Moda",
+    "Beleza",
+    "Esporte",
+    "Pets",
+    "Promoções",
+    "e-books"
+  ],
+  "cardsTitulos": [
+    "Oferta Exclusiva: Amazon Premium",
+    "Hub USB 3.0 TP-Link UH400, 4 Portas",
+    "Nike Brasil em promoção",
+    "Produto Exemplo 04",
+    "Produto Exemplo 05",
+    "Produto Exemplo 06",
+    "Oferta Exclusiva: Amazon Premium"
+  ],
+  "cardsDescricoes": [
+    "Economia real em um clique. Aprovado pelo nosso portal de descontos para garantir o melhor preço do mercado agora",
+    "Marca TP-Link\nCor PRETO\nInterface USB 3.0",
+    "Oferta limitada: garanta agora o seu cupom antes que acabe.",
+    "Descrição breve do desconto imperdível que você encontrou.",
+    "Descrição do produto com foco em conversão de cliques.",
+    "Oferta limitada: garanta agora o seu cupom antes que acabe.",
+    "Economia real em um clique."
+  ],
+  "botoes": [
+    "Ver mais",
+    "Ver mais",
+    "Ver mais",
+    "Ver mais",
+    "Ver mais",
+    "Ver mais",
+    "Ver mais",
+    "Ver mais",
+    "Teste",
+    "Compre Agora",
+    "Ver Detalhes",
+    "Ver Detalhes",
+    "Ver Detalhes",
+    "Ver Detalhes",
+    "Ver Detalhes"
+  ]
+}

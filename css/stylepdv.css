@@ -1,0 +1,564 @@
+
+/* =========================================================================
+   1. VARIÁVEIS GLOBAIS E RESET
+   ========================================================================= */
+:root {
+    --primary-color: #d32f2f; /* Vermelho destaque */
+    --dark-blue: #0a192f;
+    --text-color: #333;
+    --white: #ffffff;
+    --gray-light: #f4f4f4;
+    --transition: all 0.3s ease;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* =========================================================================
+   2. HEADER E NAVEGAÇÃO
+   ========================================================================= */
+.main-header {
+    width: 100%;
+    z-index: 1000;
+    transition: var(--transition);
+    height: 90px; 
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background: var(--text-color);
+    transition: all 0.3s ease;
+}
+
+.nav-menu.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.menu-toggle.is-active .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.is-active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.menu-toggle.is-active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.main-header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-menu {
+    height: 20px;
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-menu a {
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+/* =========================================================================
+   3. HERO SECTION
+   ========================================================================= */
+.hero {
+    min-height: auto; /* Remove a obrigação de tela cheia se preferir */
+    padding: 60px 20px; /* Reduz o espaço interno de cima e de baixo */
+    background: url('../images/bannerpdv1.png') no-repeat center center/cover;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    color: var(--white);
+    margin-top: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.hero-buttons .btn-primary {
+    background: var(--primary-color);
+    color: white;
+    padding: 15px 30px;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: var(--transition);
+}
+
+.hero-buttons .btn-secondary {
+    border: 2px solid white;
+    padding: 13px 28px;
+    color: white;
+    text-decoration: none;
+}
+
+
+/* =========================================================================
+   4. SLIDER DE BANNERS
+   ========================================================================= */
+.banner-container {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 0px;
+    position: relative; /* Essencial para que as setas com position: absolute fiquem presas aqui dentro */
+}
+
+.banner-slider {
+    display: flex;
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory;
+    cursor: grab;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Oculta a barra de rolagem no Firefox */
+    width: 100%;
+}
+
+.banner-slider:active {
+    cursor: grabbing;
+}
+
+/* Oculta a barra de rolagem no Chrome/Safari */
+.banner-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.banner-item {
+    min-width: 100%; /* Essencial para cada banner ocupar a tela inteira */
+    height: 650px;
+    scroll-snap-align: start;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sectionbanner-title {
+    margin-bottom: 2px;
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--dark-blue, #0a192f);
+}
+
+.sectionbanner-subtitle {
+    margin-bottom: 2px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--dark-blue, #0a192f);
+}
+
+.banner-item:nth-child(1) { background-image: url('../images/painel_home.png'); }
+.banner-item:nth-child(2) { background-image: url('../images/painel_lojapdv.png'); }
+.banner-item:nth-child(3) { background-image: url('../images/painel_relgraf.png'); }
+.banner-item:nth-child(4) { background-image: url('../images/painel_relcompleto.png'); }
+/* =========================================================================
+   5. SEÇÃO DE PREÇOS / PLANOS PDV
+   ========================================================================= */
+.pricing-section {
+    padding: 80px 0;
+    background-color: var(--gray-light, #f4f4f4);
+    margin-top: -50px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: -10px;
+    color: var(--dark-blue, #0a192f);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    background: var(--white, #ffffff);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition, all 0.3s ease);
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.pricing-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.pricing-card.featured {
+    border: 2px solid var(--primary-color, #d32f2f);
+}
+
+.card-image {
+    width: 100%;
+    height: 200px;
+    background-color: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.badge {
+    background-color: var(--primary-color, #d32f2f);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    align-self: flex-start;
+    margin-bottom: 15px;
+}
+
+.pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--dark-blue, #0a192f);
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color, #333);
+    margin-bottom: 15px;
+}
+
+.price .value {
+    font-size: 2.2rem;
+    color: var(--primary-color, #d32f2f);
+    font-weight: 700;
+}
+
+.price .period {
+    font-size: 0.9rem;
+    color: #777;
+    font-weight: normal;
+}
+
+.card-desc {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.features-list {
+    list-style: none;
+    margin-bottom: 30px;
+    padding: 0;
+    flex-grow: 1;
+}
+
+.features-list li {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.btn-plan {
+    display: block;
+    text-align: center;
+    background-color: var(--primary-color, #d32f2f);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-plan:hover {
+    opacity: 0.9;
+}
+
+.btn-plan.secondary {
+    background-color: var(--dark-blue, #0a192f);
+}
+
+
+/* =========================================================================
+   6. SEÇÃO DE TECNOLOGIA
+   ========================================================================= */
+.tech-section {
+    padding: 50px 0;
+    background: #fdfdfd;
+    margin-top: -50px;
+}
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.tech-item {
+    text-align: center;
+    padding: 30px;
+}
+
+.tech-item svg {
+    width: 50px;
+    height: 50px;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    transition: var(--transition);
+}
+
+.tech-item:hover svg {
+    transform: scale(1.1);
+}
+
+.tech-item h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+
+/* =========================================================================
+   7. SEÇÃO ESTATÍSTICAS
+   ========================================================================= */
+.stats-section {
+    padding: 30px 0;
+    background: var(--dark-blue);
+    color: var(--white);
+    text-align: center;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.stat-item h3 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.stat-item p {
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+
+/* =========================================================================
+   8. UTILITÁRIOS E MODAL DE CADASTRO
+   ========================================================================= */
+.cordotituto {
+    color: red;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--white, #ffffff);
+    padding: 30px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-content h2 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: var(--dark-blue, #0a192f);
+}
+
+.modal-content p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+}
+
+.btn-submit-pagamento {
+    width: 100%;
+    background-color: #00a650;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.btn-submit-pagamento:hover {
+    background-color: #008f43;
+}
+
+/* Responsividade Geral */
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+}
+
+
+/* =========================================================================
+   9. LINK DO WHATSAPP
+   ========================================================================= */
+
+#whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
+}
+
+#whatsapp-float a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+#whatsapp-float a:hover {
+  background-color: #20ba5a;
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}

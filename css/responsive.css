@@ -1,0 +1,81 @@
+
+/* --- Ajustes para Telas até 1024px (Tablets) --- */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+}
+
+/* --- Ajustes para Telas até 768px (Mobile/Tablets pequenos) --- */
+@media (max-width: 768px) {
+    /* Header */
+    .nav-menu {
+        display: none; 
+    }
+
+    /* Hero */
+    .hero h1 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero-buttons .btn-primary, 
+    .hero-buttons .btn-secondary {
+        margin-right: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Seção Produtos */
+    .products-section {
+        padding: 50px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    /* Seção Tecnologia */
+    .tech-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tech-section {
+        padding: 50px 0;
+    }
+
+    /* Seção Estatísticas */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+}
+
+/* --- Ajustes para Telas até 480px (Smartphones Pequenos) --- */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* Mostra o ícone no mobile */
+    }
+
+    .nav-menu {
+        display: none; /* Oculta a lista padrão */
+    }
+}

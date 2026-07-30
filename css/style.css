@@ -1,0 +1,500 @@
+
+/* --- CONFIGURAÇÕES GERAIS --- */
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', sans-serif; 
+}
+
+/* --- CABEÇALHO E LOGO --- */
+
+header {
+    position: static; /* Fixa o elemento na tela antes: fixed*/
+    /* top: 0; */          /* Alinha ao topo */
+    /* left: 0; */
+    /* width: 100%; */     /* Garante que o menu ocupe toda a largura */
+    z-index: 1000;   /* Garante que o menu fique acima de outros elementos */
+    background: white;  /*Defina a cor de fundo desejada */
+    }
+
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    }
+
+
+nav { 
+    display: flex; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+    }
+
+nav a { 
+    color: #333; /* #333 */
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: 17px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+nav a:hover { /* modelo para aperecer uma linha abaixo do texto */
+    color: #16834b;
+    border-bottom: 2px solid #16834b;
+}
+
+
+/* Isso garante que NENHUMA imagem no site ultrapasse o tamanho do seu container */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Isso garante que a sua logo, especificamente, obedeça ao que você quer */
+.logo img {
+    height: 100px !important; /* Force a altura */
+    width: auto !important;  /* Mantenha a proporção */
+    min-width: unset !important;
+    max-width: none !important;
+    display: block;
+    margin-bottom:0.2px;
+}
+
+
+.slogan {
+    text-align: left;
+    color: green;
+    font-size: 1rem; /*Definição do tamanho da fonte*/
+}
+
+
+body { 
+    /*background: #16834bff; /* cor azul - #007bff; * 16834bff/
+    color: white; 
+    padding-top: 100px; /* Ajuste conforme a altura real do seu cabeçalho */
+    background: #222; /* Mesma cor de fundo do rodapé para manter a harmonia */
+    color: white; 
+    /*padding-top: 100px; /* Ajuste conforme a altura real do seu cabeçalho */
+}
+
+
+/* --- SLIDER DE BANNERS --- */
+.banner-container {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 1px;
+}
+
+.banner-slider {
+    display: flex;
+    overflow-x: auto; 
+    scroll-snap-type: x mandatory;
+    cursor: grab; /* Indica que é possível arrastar */
+    scroll-behavior: smooth; /* Rolagem suave ao clicar nos banners */
+    scrollbar-width: none; /* Oculta a barra, mas mantém a funcionalidade */
+}
+
+/* Opcional: Melhora o feedback ao clicar */
+.banner-slider:active {
+    cursor: grabbing;
+}
+
+.banner-slider::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.banner-item {
+    min-width: 100%;
+    height: 650px;
+    scroll-snap-align: start;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /*background-blend-mode: overlay; */
+    background-color: rgba(0, 0, 0, 0.3); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Caminhos das imagens */
+.banner-item:nth-child(1) { background-image: url('../images/bannernovosem.png'); }
+.banner-item:nth-child(2) { background-image: url('../images/bannertecnologia.png'); }
+.banner-item:nth-child(3) { background-image: url('../images/bannerpdv.png'); }
+
+#secao-eletronicos {
+    display: contents;
+}
+
+
+.titulo-destaque {
+    text-align: center;
+    color: goldenrod;
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.container { 
+    max-width: 1200px; 
+    margin: 20px auto; 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 10px; 
+    padding: 0 20px; 
+}
+
+.card { 
+    background: #36454F; /* Cinza escuro grafite */
+    color: #ffffff;      /* Texto branco para dar contraste */ 
+    padding: 10px; 
+    border-radius: 10px; 
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    transition: transform 0.3s; 
+    text-align: center; 
+    flex:1;
+    font-size: 12px;
+    
+}
+
+.card img{
+    display: block;
+    width:100%;
+    border-radius:10px;
+    
+}
+
+.card:hover { 
+    transform: translateY(-10px); 
+}
+
+
+.cta-button { 
+    display: inline-block;
+    background: #e67e22; 
+    color: white; 
+    text-decoration: none;
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 700;
+    
+}
+
+button {
+    display: inline-block;
+    font-size: 13px;
+    text-decoration: none;
+    
+    /* Adições para virar botão e mostrar a mãozinha */
+    cursor: pointer;          /* Transforma o cursor na mãozinha */
+    background-color: #27ae60; /* Cor de fundo do botão (ex: verde) */
+    color: white;             /* Cor do texto */
+    border: none;             /* Remove a borda padrão do navegador */
+    padding: 10px 20px;       /* Espaçamento interno para dar corpo ao botão */
+    border-radius: 5px;       /* Arredonda as pontas */
+    font-weight: bold;        /* Deixa o texto em negrito */
+    transition: background-color 0.3s ease; /* Cria uma transição suave ao passar o mouse */
+}
+
+/* Efeito ao passar o mouse por cima */
+button:hover {
+    background-color: #219653; /* Um tom um pouco mais escuro para o hover */
+}
+
+.container1 { 
+    max-width: 1200px; 
+    margin: 40px auto; 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 10px; 
+    padding: 0 20px; 
+}
+
+
+/* ---- VOLTAR AO INICIO ----- */
+.voltar_inicio {
+    color: white;
+    font-weight: bold;
+    background: green;
+    text-align: center;
+    padding: 20px;
+}
+
+/* --- RODAPÉ --- */
+footer { 
+    background: #333; 
+    color: white; 
+    text-align: center; 
+    padding: 20px; 
+    margin-top: 40px; 
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+.titulo-produtos {
+    margin-top: 50px;       /* Cria o espaço acima do título */
+    margin-bottom: 20px;    /* Cria um espaço abaixo, antes dos produtos */
+    text-align: center;     /* Centraliza o título, se desejar */
+    font-family: sans-serif; /* Define a fonte */
+}
+
+/* Estilização do Rodapé */
+.site-footer {
+    background-color: #222;
+    color: #fff;
+    padding: 40px 20px 20px;
+    margin-top: 50px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-content {
+    display: table;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    display: table-cell;
+    padding: 0 20px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.footer-section h3 {
+    color: #f39c12; /* Cor de destaque (laranja para combinar com frango/comida) */
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    line-height: 2;
+}
+
+.footer-section ul li a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    margin-top: 30px;
+    padding-top: 20px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Responsividade simples para o rodapé */
+@media (max-width: 768px) {
+    .footer-section {
+        display: block;
+        margin-bottom: 30px;
+    }
+}
+
+/* Bloco de ofertas modelo Amazon */
+.container-principal {
+    display: grid;
+    /* Isso garante 4 colunas iguais, não importa o tamanho da tela */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 10px; /* Espaço entre os blocos */
+    padding: 10px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.bloco-oferta {
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    
+    }
+
+/* Opcional: ajustar imagens para não estourarem o layout */
+/*.bloco-oferta img {
+    width: 100%;
+    height: auto;
+} */
+
+.bloco-oferta img {
+    width: 100%;             /* Ocupa toda a largura do bloco */
+    height: 180px;           /* Define uma altura padrão para o espaço da imagem */
+    object-fit: contain;     /* Garante que a imagem inteira apareça, sem cortes */
+    background-color: #ffffff; /* Fundo branco para preencher o espaço vazio, caso a proporção da imagem seja diferente */
+    padding: 10px;           /* Opcional: cria uma margem interna para a imagem não colar nas bordas */
+    transition:transform .3s ease,
+               box-shadow .3s ease;
+}
+
+.bloco-oferta button {
+    display: block;          /* Transforma em bloco para aceitar margens automáticas */
+    width: auto;             /* Faz o botão ter apenas o tamanho do texto + espaçamento */
+    padding: 10px 20px;      /* Dá um tamanho bacana para o botão */
+    margin-top: 10px;
+    margin-left: auto;       /* Força o centro junto com a direita */
+    margin-right: auto;
+    color: black;
+    background: greenyellow;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.bloco-oferta h2 {
+    font-size: 16px;
+    color: #333333;
+    margin-bottom: 5px;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: center;
+    
+}
+
+.bloco-oferta p {
+    font-size: 12px;
+    color: #333333;
+    text-align: center;
+    padding: -20px;
+}
+
+/* BANNERS AUTOMATICO */
+/* ==========================================================
+   SLIDER PROMOSELECT
+   Resolução recomendada dos banners: 1920 x 700 px
+   ========================================================== */
+
+.slider-container {
+    width: 100%;
+    aspect-ratio: 1024 / 237;   /* Mantém sempre a proporção */
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;        /* Opcional */
+}
+
+.slider-wrapper {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.banner {
+    min-width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.banner a{
+    display:block;
+    width:100%;
+    height:100%;
+}
+
+.banner img {
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    /* Faz a imagem preencher todo o banner */
+    object-fit: cover;
+
+    /* Centraliza o corte caso necessário */
+    object-position: center;
+
+    /* Pequeno efeito ao passar o mouse */
+    transition: transform .35s ease;
+}
+
+.banner:hover img{
+    transform: scale(1.03);
+}
+
+/* Fim do banner */
+
+#tecno, #casa, #moda {
+    scroll-margin-top: 200px; /* Altura ideal para compensar o menu fixo e respiros do topo */
+}
+
+/* =========================================================================
+   9. LINK DO WHATSAPP
+   ========================================================================= */
+
+#whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
+}
+
+#whatsapp-float a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+#whatsapp-float a:hover {
+  background-color: #20ba5a;
+  transform: scale(1.1);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ===========================
+   Banner de Descontos
+=========================== */
+
+.banner-descontos-section{
+    width:100%;
+    max-width:1440px;
+    margin:40px auto;
+    padding:0 20px;
+    box-sizing:border-box;
+}
+
+.banner-link{
+    display:block;
+    text-decoration:none;
+}
+
+.banner-img{
+    width:100%;
+    height:auto;
+    display:block;
+    box-shadow:0 5px 20px rgba(0,0,0,.20);
+    transition:transform .3s ease,
+               box-shadow .3s ease;
+}
+
+.banner-img:hover{
+    transform:scale(1.02);
+    box-shadow:0 10px 30px rgba(0,0,0,.30);
+}

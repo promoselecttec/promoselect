@@ -1,0 +1,169 @@
+
+/* --- CONFIGURAÇÕES GERAIS --- */
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', sans-serif; 
+}
+
+/* --- CABEÇALHO E LOGO --- */
+
+header {
+    position: static; /* Fixa o elemento na tela antes: fixed*/
+    /* top: 0; */          /* Alinha ao topo */
+    /* left: 0; */
+    /* width: 100%; */     /* Garante que o menu ocupe toda a largura */
+    z-index: 1000;   /* Garante que o menu fique acima de outros elementos */
+    background: white;  /*Defina a cor de fundo desejada */
+    }
+
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px 20px;
+}
+
+
+nav { 
+    display: flex; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+}
+
+nav a { 
+    color: #333; /* #333 */
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: 17px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+nav a:hover { /* modelo para aperecer uma linha abaixo do texto */
+    color: #16834b;
+    border-bottom: 2px solid #16834b;
+}
+
+
+/* Isso garante que NENHUMA imagem no site ultrapasse o tamanho do seu container */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Isso garante que a sua logo, especificamente, obedeça ao que você quer */
+.logo img {
+    height: 100px !important; /* Force a altura */
+    width: auto !important;  /* Mantenha a proporção */
+    min-width: unset !important;
+    max-width: none !important;
+    display: block;
+    margin-bottom:0.2px;
+}
+
+.slogan {
+    text-align: left;
+    color: green;
+    font-size: 1rem; /*Definição do tamanho da fonte*/
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.links-header {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #ffffff;
+    border-bottom: 5px solid #eaeaea;
+    }
+
+.links-header h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.links-header p {
+    color: #666;
+    font-size: 1rem;
+}
+
+.links-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+.link-card {
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    padding: 15px;
+    gap: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 800px;
+}
+
+.link-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.link-img {
+    width: 400px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    background-color: #e1e1e1;
+}
+
+.link-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.link-info h3 {
+    font-size: 1.15rem;
+    margin: 0 0 8px 0;
+    color: #222;
+}
+
+.link-url {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    word-break: break-all;
+}
+
+.link-url:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .link-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .link-img {
+        width: 100%;
+        height: 180px;
+    }
+}

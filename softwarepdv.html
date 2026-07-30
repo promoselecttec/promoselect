@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromoSelectPDV | Software PDV como solução para seu negócio!!</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <meta name="description" content="Website institucional focado em inovação e tecnologia.">
+    
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Arquivos CSS -->
+    <link rel="stylesheet" href="css/stylepdv.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+    <!-- Loader -->
+    <div id="loader"></div>
+
+    <!-- Header -->
+    <header class="main-header" id="header">
+        <nav class="container">
+            <div class="logo">
+                <a> <a href="softwarepdv.html">
+                <img src="images/logopromo.png" alt="Logo PromoSelect" style="height: 90px;">
+                    </a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="softwarepdv.html">Home</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#tecnologia">Tecnologia</a></li>
+                <li><a href="#planos">Planos</a></li>
+                <li><a href="index.html">Conheça a PromoSelect</a></li>
+            </ul>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+           
+            
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1 class="fade-in-up">Clique e compre seu PDV agora mesmo com um desconto especial!!</h1>
+            <p class="fade-in-up delay-1">"Uma seleção inteligente de produtos com descontos reais para facilitar suas compras online."</p>
+            <div class="hero-buttons fade-in-up delay-2">
+                <a href="#produtos" class="btn-primary">Conheça mais</a>
+                <a href="#contato" class="btn-secondary">Fale conosco</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Banners (Movida para fora do local incorreto) -->
+   <!-- Seção de Banners -->
+    <section class="banner-container" id="produtos">;
+        <div class="container">
+            <h2 class="sectionbanner-title">Navegue pelas telas do nosso Software PDV</h2>
+            <p class="sectionbanner-subtitle">Confira a seguir a tela principal, a tela PDV e os relatórios em destaque</p>
+        </div>
+        
+        <div class="banner-slider">
+            <div class="banner-item"></div>
+            <div class="banner-item"></div>
+            <div class="banner-item"></div>
+            <div class="banner-item"></div>
+        </div>
+
+        <!-- Setas de navegação posicionadas corretamente fora do fluxo do slider -->
+        <button onclick="scrollSlider(-1)" class="banner-btn-prev" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 10;">Anterior</button>
+        <button onclick="scrollSlider(1)" class="banner-btn-next" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 10;">Próximo</button>
+    
+    <!-- código java para o banner automatico -->
+<script>
+let counter = 0;
+const wrapper = document.querySelector('.slider-wrapper');
+const banners = document.querySelectorAll('.banner');
+
+function slide() {
+    counter++;
+    if (counter >= banners.length) {
+        counter = 0; // Volta para o primeiro
+    }
+    // Move o wrapper para a esquerda baseado no contador
+    wrapper.style.transform = `translateX(-${counter * (100 / banners.length)}%)`;
+}
+
+// Muda o banner a cada 3 segundos
+setInterval(slide, 3000);
+</script>
+    
+    
+    </section>
+
+    <!-- Seção de Planos / Opções de Compra -->
+    <section class="pricing-section" id="planos">
+        <div class="container">
+            <h2 class="section-title"><span class="cordotituto">Oferecemos 2 modelos de negócio:</span> compare e escolha qual modelo mais se ajusta ao seu orçamento</h2>
+            <p class="section-subtitle">Tenha nosso PDV rodando com a segurança e o suporte que você precisa.</p>
+            
+            <div class="pricing-grid">
+                
+                <!-- Opção 1: Suporte Mensal -->
+                <div class="pricing-card featured">
+                    <div class="card-image">
+                        <img src="images/pdv_mensal.png" alt="Software PDV com Suporte Mensal">
+                    </div>
+                    <div class="card-content">
+                        <span class="badge">Mais Recomendado</span>
+                        <h3>PDV + Suporte Mensal</h3>
+                        <div class="price">
+                            <span class="currency">R$</span> <span class="value">99,90</span><span class="period">/mês</span>
+                        </div>
+                        <p class="card-desc">Ideal para quem busca tranquilidade e atendimento rápido sempre que precisar.</p>
+                        <ul class="features-list">
+                            <li>✔️ Licença completa do Software PDV</li>
+                            <li>✔️ Atendimento via WhatsApp e E-mail</li>
+                            <li>✔️ Resposta e atendimento em <strong>até 30 minutos</strong></li>
+                            <li>✔️ Suporte remoto via acesso ao PC</li>
+                            <li>✔️ Plano Completo: R$ 99,90/mês (R$ 1.198,80/ano) com suporte prioritário e ilimitado.</li>
+                        </ul>
+                        <button class="btn-plan" onclick="abrirModal('PDV + Suporte Mensal')">Assinar com Suporte Mensal</button>
+                    </div>
+                </div>
+
+                <!-- Opção 2: Suporte Pontual -->
+                <div class="pricing-card">
+                    <div class="card-image">
+                        <img src="images/pdv_pontual.png" alt="Software PDV com Suporte Pontual">
+                    </div>
+                    <div class="card-content">
+                        <h3>PDV (SEM SUPORTE MENSAL)</h3>
+                        <div class="price">
+                            <span class="currency">R$</span> <span class="value">250,00</span> <span class="period">/pela licença do software por 1 ano</span>
+                        </div>
+                        <p class="card-desc">Ideal para quem tem autonomia e deseja pagar suporte apenas quando precisar de ajuda técnica, ou seja, paga somente pelo software (com licença para 1 ano).</p>
+                        <ul class="features-list">
+                            <li>✔️ Licença completa do Software PDV (por 1 ano)</li>
+                            <li>✔️ Sem mensalidade fixa</li>
+                            <li>✔️ Acione quando precisar, pagando pontualmente o valor de R$ 30,00 por chamado atendido</li>
+                            <li>✔️ Plano Econômico: R$ 250,00/ano suporte por demanda(R$ 30/chamado)</li>
+                            <li>✔️ Renovação da licença anualmente</li>
+                        </ul>
+                        <button class="btn-plan secondary" onclick="abrirModal('PDV + Suporte Pontual')">Comprar PDV Simples</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seção de Tecnologia -->
+    <section class="tech-section" id="tecnologia">
+        <div class="container">
+            <h2 class="section-title">Nossa Tecnologia</h2>
+            <div class="tech-grid">
+                <!-- Item 1 -->
+                <div class="tech-item fade-in-up">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    <h3>Arquitetura HTML5 + Java</h3>
+                    <p>Suporte Mensal (conforme plano escolhido) via acesso remoto.</p>
+                </div>
+                <!-- Item 2 -->
+                <div class="tech-item fade-in-up delay-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 2v20M2 12h20"></path>
+                    </svg>
+                    <h3>Conectividade Global</h3>
+                    <p>Alcance mundial com latência mínima.</p>
+                </div>
+                <!-- Item 3 -->
+                <div class="tech-item fade-in-up delay-2">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+                    </svg>
+                    <h3>Segurança Cibernética</h3>
+                    <p>Proteção de dados com criptografia de ponta no momento do pagamento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Seção Estatísticas -->
+    <section class="stats-section" id="stats">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h3 class="counter" data-target="50">0</h3>
+                <p>Anos de Experiência</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="120">0</h3>
+                <p>Países Atendidos</p>
+            </div>
+            <div class="stat-item">
+                <h3 class="counter" data-target="5000">0</h3>
+                <p>Clientes Satisfeitos</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Qualidade Garantida</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE CADASTRO PRÉVIO COM ENVIO PARA E-MAIL -->
+    <div id="modal-cadastro" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="fecharModal()">&times;</button>
+            
+            <h2>Quase lá! Preencha seus dados</h2>
+            <p>Preencha para liberar o acesso ao seu PDV e vincular o suporte.</p>
+            
+            <form id="form-cadastro" action="https://api.web3forms.com/submit" method="POST">
+                <!-- Insira sua chave do Web3Forms no value abaixo -->
+                <input type="hidden" name="apikey" value="SUA-CHAVE-DE-ACESSO-AQUI">
+                <input type="hidden" id="plano-escolhido" name="Plano_Escolhido">
+                <input type="hidden" name="subject" value="Novo Lead / Compra de PDV no Site!">
+
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="Nome" required placeholder="Seu nome ou nome da empresa">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="Email" required placeholder="seu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="whatsapp">WhatsApp (com DDD)</label>
+                    <input type="tel" id="whatsapp" name="WhatsApp" required placeholder="(21) 99999-9999">
+                </div>
+
+                <div class="form-group">
+                    <label for="documento">CPF ou CNPJ</label>
+                    <input type="text" id="documento" name="Documento_CPF_CNPJ" required placeholder="000.000.000-00 ou 00.000.000/0001-00">
+                </div>
+
+                <button type="submit" class="btn-submit-pagamento">Prosseguir para o Pagamento Seguro</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="./js/menu.js" defer></script>
+    <script src="./js/script.js" defer></script>
+    
+    <!-- Script do Modal e Envio -->
+    <script>
+        function abrirModal(nomePlano) {
+            const modal = document.getElementById('modal-cadastro');
+            const inputPlano = document.getElementById('plano-escolhido');
+            inputPlano.value = nomePlano;
+            modal.style.display = 'flex';
+        }
+
+        function fecharModal() {
+            const modal = document.getElementById('modal-cadastro');
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal-cadastro');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        const formulario = document.getElementById('form-cadastro');
+        formulario.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(formulario);
+            const planoSelecionado = document.getElementById('plano-escolhido').value;
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (planoSelecionado === 'PDV + Suporte Mensal') {
+                        window.location.href = "https://www.mercadopago.com.br/seu-link-mensal-aqui";
+                    } else {
+                        window.location.href = "https://www.mercadopago.com.br/seu-link-pontual-aqui";
+                    }
+                } else {
+                    alert('Houve um pequeno erro ao registrar seus dados. Tente novamente.');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro de conexão. Verifique sua internet.');
+            });
+        });
+    </script>
+    
+<!-- Botão Flutuante do WhatsApp -->
+<div id="whatsapp-float">
+  <a href="https://wa.me/55SEUNUMEROWHATSAPP?text=Olá!%20Gostaria%20de%20mais%20informações." target="_blank" rel="noopener noreferrer" title="Fale conosco no WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="36" height="36" fill="#ffffff">
+      <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825.735 5.475 2.019 7.781l-2.019 7.375 7.563-1.981c2.181 1.25 4.75 1.938 7.438 1.938 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.313c-2.388 0-4.663-.65-6.638-1.85l-.475-.288-4.938 1.294 1.319-4.813-.313-.5a13.374 13.374 0 01-2.031-7.15c0-7.375 6-13.375 13.375-13.375s13.375 6 13.375 13.375-6 13.375-13.375 13.375zM22.75 19.538c-.375-.188-2.225-1.1-2.575-1.225s-.6-.188-.85.188c-.25.375-.975 1.225-1.2 1.475s-.438.288-.813.1c-.375-.188-1.588-.588-3.025-1.863-1.125-1-1.875-2.238-2.1-2.613s-.025-.575.163-.763c.163-.163.375-.425.563-.638s.25-.375.375-.625c.125-.25.063-.475-.031-.663s-.85-2.05-1.163-2.813c-.3-.738-.6-.638-.825-.65l-.7-.013c-.25 0-.65.088-.988.438s-1.313 1.288-1.313 3.138c0 1.85 1.35 3.638 1.538 3.888s2.663 4.075 6.45 5.713c.9.388 1.6.625 2.15.8adquirir.9.288 1.725.25 2.375.15.725-.113 2.225-.913 2.538-1.788s.313-1.625.225-1.788c-.088-.163-.325-.263-.7-.45z"/>
+    </svg>
+  </a>
+</div>
+   
+    
+</body>
+</html>
