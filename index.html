@@ -11,7 +11,24 @@
     
     <!-- Link para o arquivo CSS externo -->
     <link rel="stylesheet" href="css/style.css">
-    
+
+    <!-- Estilo Inline Rápido para o Destaque do Software PDV no Menu -->
+    <style>
+        .menu-destaque-pdv {
+            background: linear-gradient(135deg, #007bff, #00c6ff);
+            color: #ffffff !important;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+        .menu-destaque-pdv:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+        }
+    </style>
 </head>
 
 <body>
@@ -19,19 +36,18 @@
     <header>
         <div class="header-container">
             <!-- Logo -->
-            
- <div class="logo">
-    <a href="index.html">
-    <img src="images\logopromo.png" alt="Logo PromoSelect" >
-    </a>
-    <h1 class="slogan">Seu Hub de promoções! Uma seleção de ofertas de grandes sites para você!</h1>
- </div>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images\logopromo.png" alt="Logo PromoSelect">
+                </a>
+                <h1 class="slogan">Seu Hub de promoções! Uma seleção de ofertas de grandes sites para você!</h1>
+            </div>
    
-            <!-- Menu -->
+            <!-- Menu com o Software PDV Destacado -->
             <nav>
                 <a href="#tecno">Tec e Eletrônicos</a>
                 <a href="#gamers">Gamers</a>
-                <a href="softwarepdv.html">Software PDV</a>
+                <a href="softwarepdv.html" class="menu-destaque-pdv">Software PDV</a>
                 <a href="links-exclusivos.html">Promoções</a>
                 <a href="https://cartugame.blogspot.com/">Nosso Blog</a>
             </nav>
@@ -48,7 +64,6 @@
     </section>
     
     <!-- Bloco de ofertas modelo AMAZON -->
-    
     <section id="moda" class="container-principal">
     <!-- Bloco 1 a 4 (Linha de cima) -->
     <div class="bloco-oferta" id="gamers">
@@ -68,8 +83,6 @@
     <a href="https://link.amazon/B0iKrr9tE">
         <button>7% off à vista no Pix ou em 10x<br>Acesse o link aqui</button></a></div>
     
-    
-    
     <div class="bloco-oferta">
     <h2>Oferta 03 - Controle Nintendo Switch Pro</h2>
     <p>Sem Fio, Vibração HD, Controle de Movimento, Funcionalidade Amiibo Embutida</p>
@@ -78,7 +91,6 @@
     <a href="https://link.amazon/B03WDRIZ2">
     <button> 14% de desconto<br>Acesse o link aqui</button></a></div>
 
-        
     <div class="bloco-oferta">
     <h2>Oferta 04 - PC Gamer Completo Intel Core i7 4ª Geração</h2>
     <p>Config: 8GB RAM, SSD 120GB, Windows 11, Monitor LED 19,Teclado e Mouse Gamer, HeadSet</p>
@@ -87,8 +99,6 @@
     <a href="https://link.amazon/B0dArlOHG">
     <button>5% off à vista no Pix ou em 12x<br>Acesse o link aqui</button></a></div>
 
-   
-    
     <!-- Bloco 5 a 8 (Linha de baixo) -->
     <div class="bloco-oferta">
     <h2>Oferta 05 - Combo Volante, Pedais e Cambio Logitech G29</h2>
@@ -126,7 +136,6 @@
             <div class="item">
                 <img src="images/oferta8_capanintendo.jpg" alt="P"></div></div>
         <a href="#"><button>-5% off no Pix ou até 3x sem juros<br>Acesse o link aqui</button></a>
-     
     </div>
 
 </section>
@@ -153,9 +162,9 @@
         <a href="https://link.amazon/B00HOolnQ" target="_blank">
         <img src="images/banner_movel4_brinquedos.jpg" alt="Banner 4"></a>
     </div>
-                   
+                
         </div>
-              
+            
 </div>
     <h1 id="tecno" class="titulo-destaque">Tecnologia e Eletrônicos</h1>
     
@@ -183,7 +192,6 @@
             <a href="https://link.amazon/B06TY6gPN" class="cta-button">ACESSE O LINK E APROVEITE</a>
         </article>
         
-        
         </div>
     </section>
 
@@ -195,7 +203,6 @@
     }
 </script>
 
-<!-- Adicione estas setas no seu HTML, dentro da section banner-container -->
 <button onclick="scrollSlider(-1)" style="position: absolute; left: 10px; top: 400px; z-index: 10;">Anterior</button>
 <button onclick="scrollSlider(1)" style="position: absolute; right: 10px; top: 400px; z-index: 10;">Próximo</button>
 
@@ -208,19 +215,15 @@ const banners = document.querySelectorAll('.banner');
 function slide() {
     counter++;
     if (counter >= banners.length) {
-        counter = 0; // Volta para o primeiro
+        counter = 0;
     }
-    // Move o wrapper para a esquerda baseado no contador
     wrapper.style.transform = `translateX(-${counter * (100 / banners.length)}%)`;
 }
 
-// Muda o banner a cada 3 segundos
 setInterval(slide, 3000);
 </script>
 
-<!-- FIM do código java para o banner automatico -->
-
- <!-- Botão Flutuante do WhatsApp -->
+<!-- Botão Flutuante do WhatsApp -->
 <div id="whatsapp-float">
   <a href="https://wa.me/552124103416?text=Olá!%20Gostaria%20de%20mais%20informações." target="_blank" rel="noopener noreferrer" title="Fale conosco no WhatsApp">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="36" height="36" fill="#ffffff">
@@ -228,23 +231,20 @@ setInterval(slide, 3000);
     </svg>
   </a>
 </div>
- 
 
- <!-- Seção do Banner de Descontos Exclusivos -->
+<!-- Seção do Banner de Descontos Exclusivos -->
 <section class="banner-descontos-section">
     <a href="links-exclusivos.html" class="banner-link">
         <img src="images/links_banner_principal.png" alt="Milhares de Links de Descontos Exclusivos"
              class="banner-img">
     </a>
 </section>
- 
- 
- <div class="voltar_inicio">
+
+<div class="voltar_inicio">
      <a href="index.html" class="voltar_inicio"> Voltar ao Início do Site</a>
- </div>
+</div>
 
 <!-- RODAPE -->
-
 <footer class="site-footer">
     <div class="footer-content">
         <div class="footer-section">
@@ -256,14 +256,13 @@ setInterval(slide, 3000);
             <ul>
                 <li><a href="links-exclusivos.html">Promoções</a></li>
                 <li><a href="#">Grandes Ofertas</a></li>
-                
             </ul>
         </div>
         <div class="footer-section">
             <h3>Contato</h3>
             <p>Email: promoselecttec@gmail.com.br</p>
             <p>Rio de Janeiro, RJ</p>
-            <p>WhatsApp Business: 21 2410-3416
+            <p>WhatsApp Business: 21 2410-3416</p>
         </div>
     </div>
     <div class="footer-bottom">
@@ -272,6 +271,4 @@ setInterval(slide, 3000);
 </footer>
 
 </body>
-
 </html>
-
