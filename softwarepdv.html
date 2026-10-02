@@ -28,9 +28,9 @@
     <header class="main-header" id="header">
         <nav class="container">
             <div class="logo">
-                <a> <a href="softwarepdv.html">
-                <img src="images/logopromo.png" alt="Logo PromoSelect" style="height: 90px;">
-                    </a>
+                <a href="softwarepdv.html">
+                    <img src="images/logopromo.png" alt="Logo PromoSelect" style="height: 90px;">
+                </a>
             </div>
             
             <ul class="nav-menu">
@@ -47,7 +47,6 @@
                 <span class="bar"></span>
             </div>
            
-            
         </nav>
     </header>
     
@@ -64,9 +63,8 @@
         </div>
     </section>
 
-    <!-- Seção de Banners (Movida para fora do local incorreto) -->
-   <!-- Seção de Banners -->
-    <section class="banner-container" id="produtos">;
+    <!-- Seção de Banners -->
+    <section class="banner-container" id="produtos">
         <div class="container">
             <h2 class="sectionbanner-title">Navegue pelas telas do nosso Software PDV</h2>
             <p class="sectionbanner-subtitle">Confira a seguir a tela principal, a tela PDV e os relatórios em destaque</p>
@@ -101,7 +99,6 @@ function slide() {
 // Muda o banner a cada 3 segundos
 setInterval(slide, 3000);
 </script>
-    
     
     </section>
 
@@ -219,19 +216,16 @@ setInterval(slide, 3000);
         </div>
     </section>
 
-    <!-- MODAL DE CADASTRO PRÉVIO COM ENVIO PARA E-MAIL -->
+    <!-- MODAL DE CADASTRO PRÉVIO COM REDIRECIONAMENTO PARA O WHATSAPP -->
     <div id="modal-cadastro" class="modal-overlay">
         <div class="modal-content">
             <button class="modal-close" onclick="fecharModal()">&times;</button>
             
             <h2>Quase lá! Preencha seus dados</h2>
-            <p>Preencha para liberar o acesso ao seu PDV e vincular o suporte.</p>
+            <p>Preencha para gerar seu atendimento e negociar o pagamento pelo WhatsApp.</p>
             
-            <form id="form-cadastro" action="https://api.web3forms.com/submit" method="POST">
-                <!-- Insira sua chave do Web3Forms no value abaixo -->
-                <input type="hidden" name="apikey" value="SUA-CHAVE-DE-ACESSO-AQUI">
+            <form id="form-cadastro">
                 <input type="hidden" id="plano-escolhido" name="Plano_Escolhido">
-                <input type="hidden" name="subject" value="Novo Lead / Compra de PDV no Site!">
 
                 <div class="form-group">
                     <label for="nome">Nome Completo</label>
@@ -245,7 +239,7 @@ setInterval(slide, 3000);
 
                 <div class="form-group">
                     <label for="whatsapp">WhatsApp (com DDD)</label>
-                    <input type="tel" id="whatsapp" name="WhatsApp" required placeholder="(21) 2410-3416">
+                    <input type="tel" id="whatsapp" name="WhatsApp" required placeholder="(21) 99999-9999">
                 </div>
 
                 <div class="form-group">
@@ -253,7 +247,7 @@ setInterval(slide, 3000);
                     <input type="text" id="documento" name="Documento_CPF_CNPJ" required placeholder="000.000.000-00 ou 00.000.000/0001-00">
                 </div>
 
-                <button type="submit" class="btn-submit-pagamento">Prosseguir para o Pagamento Seguro</button>
+                <button type="submit" class="btn-submit-pagamento">Continuar para o WhatsApp</button>
             </form>
         </div>
     </div>
@@ -262,7 +256,7 @@ setInterval(slide, 3000);
     <script src="./js/menu.js" defer></script>
     <script src="./js/script.js" defer></script>
     
-    <!-- Script do Modal e Envio -->
+    <!-- Script do Modal ajustado para o WhatsApp -->
     <script>
         function abrirModal(nomePlano) {
             const modal = document.getElementById('modal-cadastro');
@@ -286,29 +280,37 @@ setInterval(slide, 3000);
         const formulario = document.getElementById('form-cadastro');
         formulario.addEventListener('submit', function(e) {
             e.preventDefault();
-            const formData = new FormData(formulario);
-            const planoSelecionado = document.getElementById('plano-escolhido').value;
 
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    if (planoSelecionado === 'PDV + Suporte Mensal') {
-                        window.location.href = "https://www.mercadopago.com.br/seu-link-mensal-aqui";
-                    } else {
-                        window.location.href = "https://www.mercadopago.com.br/seu-link-pontual-aqui";
-                    }
-                } else {
-                    alert('Houve um pequeno erro ao registrar seus dados. Tente novamente.');
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                alert('Erro de conexão. Verifique sua internet.');
-            });
+            // Captura os valores dos campos
+            const plano = document.getElementById('plano-escolhido').value;
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const whats = document.getElementById('whatsapp').value;
+            const documento = document.getElementById('documento').value;
+
+            // Número do WhatsApp da empresa configurado (com DDI 55 e DDD 21)
+            const numeroEmpresa = "552124103416";
+
+            // Monta a mensagem formatada para o WhatsApp
+            const mensagem = `Olá! Gostaria de adquirir o software PDV.\n\n` +
+                             `*Plano Escolhido:* ${plano}\n` +
+                             `*Nome:* ${nome}\n` +
+                             `*E-mail:* ${email}\n` +
+                             `*WhatsApp:* ${whats}\n` +
+                             `*CPF/CNPJ:* ${documento}\n\n` +
+                             `Como procedemos com o pagamento?`;
+
+            // Codifica a mensagem para URL
+            const mensagemCodificada = encodeURIComponent(mensagem);
+
+            // Abre o WhatsApp com a mensagem pronta
+            const urlWhatsApp = `https://wa.me/${numeroEmpresa}?text=${mensagemCodificada}`;
+            
+            // Fecha o modal antes de redirecionar
+            fecharModal();
+            
+            // Redireciona o usuário
+            window.open(urlWhatsApp, '_blank');
         });
     </script>
     
@@ -321,6 +323,5 @@ setInterval(slide, 3000);
   </a>
 </div>
    
-    
 </body>
 </html>
