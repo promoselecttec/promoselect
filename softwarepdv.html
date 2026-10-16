@@ -329,10 +329,12 @@ setInterval(slide, 3000);
                                  `*Origem (GCLID):* ${gclidSalvo}\n\n` +
                                  `Como procedemos com o pagamento?`;
 
-                // Dispara a conversão no Google Ads
+                // Dispara a conversão exata no Google Ads com a etiqueta correta
                 if (typeof gtag === 'function') {
                     gtag('event', 'conversion', {
-                        'send_to': 'AW-18516243279'
+                        'send_to': 'AW-18516243279/R07MCM_NkJ8dEM_mnf1E',
+                        'value': 1.0,
+                        'currency': 'BRL'
                     });
                 }
 
