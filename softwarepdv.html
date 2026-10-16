@@ -85,29 +85,9 @@
             <div class="banner-item"></div>
         </div>
 
-        <!-- Setas de navegação posicionadas corretamente fora do fluxo do slider -->
+        <!-- Setas de navegação -->
         <button onclick="scrollSlider(-1)" class="banner-btn-prev" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); z-index: 10;">Anterior</button>
         <button onclick="scrollSlider(1)" class="banner-btn-next" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); z-index: 10;">Próximo</button>
-    
-    <!-- código java para o banner automatico -->
-<script>
-let counter = 0;
-const wrapper = document.querySelector('.slider-wrapper');
-const banners = document.querySelectorAll('.banner');
-
-function slide() {
-    counter++;
-    if (counter >= banners.length) {
-        counter = 0; // Volta para o primeiro
-    }
-    // Move o wrapper para a esquerda baseado no contador
-    wrapper.style.transform = `translateX(-${counter * (100 / banners.length)}%)`;
-}
-
-// Muda o banner a cada 3 segundos
-setInterval(slide, 3000);
-</script>
-    
     </section>
 
     <!-- Seção de Planos / Opções de Compra -->
@@ -151,7 +131,7 @@ setInterval(slide, 3000);
                         <div class="price">
                             <span class="currency">R$</span> <span class="value">250,00</span> <span class="period">/pela licença do software por 1 ano</span>
                         </div>
-                        <p class="card-desc">Ideal para quem tem autonomia e deseja pagar suporte apenas quando precisar de ajuda técnica, ou seja, paga somente pelo software (com licença para 1 ano).</p>
+                        <p class="card-desc">Ideal para quem has autonomia e deseja pagar suporte apenas quando precisar de ajuda técnica, ou seja, paga somente pelo software (com licença para 1 ano).</p>
                         <ul class="features-list">
                             <li>✔️ Licença completa do Software PDV (por 1 ano)</li>
                             <li>✔️ Sem mensalidade fixa</li>
@@ -172,7 +152,6 @@ setInterval(slide, 3000);
         <div class="container">
             <h2 class="section-title">Nossa Tecnologia</h2>
             <div class="tech-grid">
-                <!-- Item 1 -->
                 <div class="tech-item fade-in-up">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
@@ -180,7 +159,6 @@ setInterval(slide, 3000);
                     <h3>Arquitetura HTML5 + Java</h3>
                     <p>Suporte Mensal (conforme plano escolhido) via acesso remoto.</p>
                 </div>
-                <!-- Item 2 -->
                 <div class="tech-item fade-in-up delay-1">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -189,7 +167,6 @@ setInterval(slide, 3000);
                     <h3>Conectividade Global</h3>
                     <p>Alcance mundial com latência mínima.</p>
                 </div>
-                <!-- Item 3 -->
                 <div class="tech-item fade-in-up delay-2">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
@@ -266,7 +243,6 @@ setInterval(slide, 3000);
     
     <!-- Script de Gestão de GCLID, Conversão e WhatsApp -->
     <script>
-        // Função para pegar parâmetros da URL (como o gclid do Google Ads)
         function getParameterByName(name) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
@@ -274,7 +250,6 @@ setInterval(slide, 3000);
             return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         }
 
-        // Salva o GCLID no localStorage caso o usuário navegue
         window.addEventListener('DOMContentLoaded', (event) => {
             const gclid = getParameterByName('gclid');
             if (gclid) {
@@ -306,20 +281,15 @@ setInterval(slide, 3000);
             formulario.addEventListener('submit', function(e) {
                 e.preventDefault();
 
-                // Captura os valores dos campos
                 const plano = document.getElementById('plano-escolhido').value;
                 const nome = document.getElementById('nome').value;
                 const email = document.getElementById('email').value;
                 const whats = document.getElementById('whatsapp').value;
                 const documento = document.getElementById('documento').value;
                 
-                // Recupera o GCLID do Google Ads
                 const gclidSalvo = getParameterByName('gclid') || localStorage.getItem('gclid') || 'Não informado';
-
-                // Número do WhatsApp da empresa
                 const numeroEmpresa = "552124103416";
 
-                // Monta a mensagem formatada para o WhatsApp
                 const mensagem = `Olá! Gostaria de adquirir o software PDV.\n\n` +
                                  `*Plano Escolhido:* ${plano}\n` +
                                  `*Nome:* ${nome}\n` +
@@ -329,7 +299,6 @@ setInterval(slide, 3000);
                                  `*Origem (GCLID):* ${gclidSalvo}\n\n` +
                                  `Como procedemos com o pagamento?`;
 
-                // Dispara a conversão exata no Google Ads com a etiqueta correta
                 if (typeof gtag === 'function') {
                     gtag('event', 'conversion', {
                         'send_to': 'AW-18516243279/R07MCM_NkJ8dEM_mnf1E',
@@ -338,27 +307,23 @@ setInterval(slide, 3000);
                     });
                 }
 
-                // Codifica a mensagem para URL
                 const mensagemCodificada = encodeURIComponent(mensagem);
                 const urlWhatsApp = `https://wa.me/${numeroEmpresa}?text=${mensagemCodificada}`;
                 
-                // Fecha o modal antes de redirecionar
                 fecharModal();
-                
-                // Redireciona o usuário para o WhatsApp
                 window.open(urlWhatsApp, '_blank');
             });
         }
     </script>
     
-<!-- Botão Flutuante do WhatsApp -->
-<div id="whatsapp-float">
-  <a href="https://wa.me/552124103416?text=Olá!%20Gostaria%20de%20mais%20informações." target="_blank" rel="noopener noreferrer" title="Fale conosco no WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="36" height="36" fill="#ffffff">
-      <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825.735 5.475 2.019 7.781l-2.019 7.375 7.563-1.981c2.181 1.25 4.75 1.938 7.438 1.938 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.313c-2.388 0-4.663-.65-6.638-1.85l-.475-.288-4.938 1.294 1.319-4.813-.313-.5a13.374 13.374 0 01-2.031-7.15c0-7.375 6-13.375 13.375-13.375s13.375 6 13.375 13.375-6 13.375-13.375 13.375zM22.75 19.538c-.375-.188-2.225-1.1-2.575-1.225s-.6-.188-.85.188c-.25.375-.975 1.225-1.2 1.475s-.438.288-.813.1c-.375-.188-1.588-.588-3.025-1.863-1.125-1-1.875-2.238-2.1-2.613s-.025-.575.163-.763c.163-.163.375-.425.563-.638s.25-.375.375-.625c.125-.25.063-.475-.031-.663s-.85-2.05-1.163-2.813c-.3-.738-.6-.638-.825-.65l-.7-.013c-.25 0-.65.088-.988.438s-1.313 1.288-1.313 3.138c0 1.85 1.35 3.638 1.538 3.888s2.663 4.075 6.45 5.713c.9.388 1.6.625 2.15.8adquirir.9.288 1.725.25 2.375.15.725-.113 2.225-.913 2.538-1.788s.313-1.625.225-1.788c-.088-.163-.325-.263-.7-.45z"/>
-    </svg>
-  </a>
-</div>
+    <!-- Botão Flutuante do WhatsApp Corrigido -->
+    <div id="whatsapp-float">
+      <a href="https://wa.me/552124103416?text=Olá!%20Gostaria%20de%20mais%20informações." target="_blank" rel="noopener noreferrer" title="Fale conosco no WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="36" height="36" fill="#ffffff">
+          <path d="M16 0c-8.837 0-16 7.163-16 16 0 2.825.735 5.475 2.019 7.781l-2.019 7.375 7.563-1.981c2.181 1.25 4.75 1.938 7.438 1.938 8.837 0 16-7.163 16-16s-7.163-16-16-16zM16 29.313c-2.388 0-4.663-.65-6.638-1.85l-.475-.288-4.938 1.294 1.319-4.813-.313-.5a13.374 13.374 0 01-2.031-7.15c0-7.375 6-13.375 13.375-13.375s13.375 6 13.375 13.375-6 13.375-13.375 13.375zM22.75 19.538c-.375-.188-2.225-1.1-2.575-1.225s-.6-.188-.85.188c-.25.375-.975 1.225-1.2 1.475s-.438.288-.813.1c-.375-.188-1.588-.588-3.025-1.863-1.125-1-1.875-2.238-2.1-2.613s-.025-.575.163-.763c.163-.163.375-.425.563-.638s.25-.375.375-.625c.125-.25.063-.475-.031-.663s-.85-2.05-1.163-2.813c-.3-.738-.6-.638-.825-.65l-.7-.013c-.25 0-.65.088-.988.438s-1.313 1.288-1.313 3.138c0 1.85 1.35 3.638 1.538 3.888s2.663 4.075 6.45 5.713c.9.388 1.6.625 2.15.8.9.288 1.725.25 2.375.15.725-.113 2.225-.913 2.538-1.788s.313-1.625.225-1.788c-.088-.163-.325-.263-.7-.45z"/>
+        </svg>
+      </a>
+    </div>
    
 </body>
 </html>
