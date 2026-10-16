@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,6 +9,15 @@
     
     <meta name="description" content="Website institucional focado em inovação e tecnologia.">
     
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18516243279"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18516243279');
+    </script>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -256,8 +264,24 @@ setInterval(slide, 3000);
     <script src="./js/menu.js" defer></script>
     <script src="./js/script.js" defer></script>
     
-    <!-- Script do Modal ajustado para o WhatsApp -->
+    <!-- Script de Gestão de GCLID, Conversão e WhatsApp -->
     <script>
+        // Função para pegar parâmetros da URL (como o gclid do Google Ads)
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+
+        // Salva o GCLID no localStorage caso o usuário navegue
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const gclid = getParameterByName('gclid');
+            if (gclid) {
+                localStorage.setItem('gclid', gclid);
+            }
+        });
+
         function abrirModal(nomePlano) {
             const modal = document.getElementById('modal-cadastro');
             const inputPlano = document.getElementById('plano-escolhido');
@@ -278,40 +302,51 @@ setInterval(slide, 3000);
         }
 
         const formulario = document.getElementById('form-cadastro');
-        formulario.addEventListener('submit', function(e) {
-            e.preventDefault();
+        if (formulario) {
+            formulario.addEventListener('submit', function(e) {
+                e.preventDefault();
 
-            // Captura os valores dos campos
-            const plano = document.getElementById('plano-escolhido').value;
-            const nome = document.getElementById('nome').value;
-            const email = document.getElementById('email').value;
-            const whats = document.getElementById('whatsapp').value;
-            const documento = document.getElementById('documento').value;
+                // Captura os valores dos campos
+                const plano = document.getElementById('plano-escolhido').value;
+                const nome = document.getElementById('nome').value;
+                const email = document.getElementById('email').value;
+                const whats = document.getElementById('whatsapp').value;
+                const documento = document.getElementById('documento').value;
+                
+                // Recupera o GCLID do Google Ads
+                const gclidSalvo = getParameterByName('gclid') || localStorage.getItem('gclid') || 'Não informado';
 
-            // Número do WhatsApp da empresa configurado (com DDI 55 e DDD 21)
-            const numeroEmpresa = "552124103416";
+                // Número do WhatsApp da empresa
+                const numeroEmpresa = "552124103416";
 
-            // Monta a mensagem formatada para o WhatsApp
-            const mensagem = `Olá! Gostaria de adquirir o software PDV.\n\n` +
-                             `*Plano Escolhido:* ${plano}\n` +
-                             `*Nome:* ${nome}\n` +
-                             `*E-mail:* ${email}\n` +
-                             `*WhatsApp:* ${whats}\n` +
-                             `*CPF/CNPJ:* ${documento}\n\n` +
-                             `Como procedemos com o pagamento?`;
+                // Monta a mensagem formatada para o WhatsApp
+                const mensagem = `Olá! Gostaria de adquirir o software PDV.\n\n` +
+                                 `*Plano Escolhido:* ${plano}\n` +
+                                 `*Nome:* ${nome}\n` +
+                                 `*E-mail:* ${email}\n` +
+                                 `*WhatsApp:* ${whats}\n` +
+                                 `*CPF/CNPJ:* ${documento}\n` +
+                                 `*Origem (GCLID):* ${gclidSalvo}\n\n` +
+                                 `Como procedemos com o pagamento?`;
 
-            // Codifica a mensagem para URL
-            const mensagemCodificada = encodeURIComponent(mensagem);
+                // Dispara a conversão no Google Ads
+                if (typeof gtag === 'function') {
+                    gtag('event', 'conversion', {
+                        'send_to': 'AW-18516243279'
+                    });
+                }
 
-            // Abre o WhatsApp com a mensagem pronta
-            const urlWhatsApp = `https://wa.me/${numeroEmpresa}?text=${mensagemCodificada}`;
-            
-            // Fecha o modal antes de redirecionar
-            fecharModal();
-            
-            // Redireciona o usuário
-            window.open(urlWhatsApp, '_blank');
-        });
+                // Codifica a mensagem para URL
+                const mensagemCodificada = encodeURIComponent(mensagem);
+                const urlWhatsApp = `https://wa.me/${numeroEmpresa}?text=${mensagemCodificada}`;
+                
+                // Fecha o modal antes de redirecionar
+                fecharModal();
+                
+                // Redireciona o usuário para o WhatsApp
+                window.open(urlWhatsApp, '_blank');
+            });
+        }
     </script>
     
 <!-- Botão Flutuante do WhatsApp -->
