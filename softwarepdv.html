@@ -237,11 +237,11 @@
         </div>
     </div>
     
-    <!-- Scripts -->
+    <!-- Scripts Auxiliares -->
     <script src="./js/menu.js" defer></script>
     <script src="./js/script.js" defer></script>
     
-    <!-- Script de Gestão de GCLID, Conversão e WhatsApp -->
+    <!-- Script de Gestão de GCLID, Conversão e WhatsApp (Isolado e Seguro) -->
     <script>
         function getParameterByName(name) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -260,13 +260,13 @@
         function abrirModal(nomePlano) {
             const modal = document.getElementById('modal-cadastro');
             const inputPlano = document.getElementById('plano-escolhido');
-            inputPlano.value = nomePlano;
-            modal.style.display = 'flex';
+            if(inputPlano) inputPlano.value = nomePlano;
+            if(modal) modal.style.display = 'flex';
         }
 
         function fecharModal() {
             const modal = document.getElementById('modal-cadastro');
-            modal.style.display = 'none';
+            if(modal) modal.style.display = 'none';
         }
 
         window.onclick = function(event) {
@@ -276,47 +276,59 @@
             }
         }
 
-        const formulario = document.getElementById('form-cadastro');
-        if (formulario) {
-            formulario.addEventListener('submit', function(e) {
-                e.preventDefault();
+        document.addEventListener('DOMContentLoaded', function() {
+            const formulario = document.getElementById('form-cadastro');
+            if (formulario) {
+                const novoFormulario = formulario.cloneNode(true);
+                formulario.parentNode.replaceChild(novoFormulario, formulario);
 
-                const plano = document.getElementById('plano-escolhido').value;
-                const nome = document.getElementById('nome').value;
-                const email = document.getElementById('email').value;
-                const whats = document.getElementById('whatsapp').value;
-                const documento = document.getElementById('documento').value;
-                
-                const gclidSalvo = getParameterByName('gclid') || localStorage.getItem('gclid') || 'Não informado';
-                const numeroEmpresa = "552124103416";
+                novoFormulario.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
 
-                const mensagem = `Olá! Gostaria de adquirir o software PDV.\n\n` +
-                                 `*Plano Escolhido:* ${plano}\n` +
-                                 `*Nome:* ${nome}\n` +
-                                 `*E-mail:* ${email}\n` +
-                                 `*WhatsApp:* ${whats}\n` +
-                                 `*CPF/CNPJ:* ${documento}\n` +
-                                 `*Origem (GCLID):* ${gclidSalvo}\n\n` +
-                                 `Como procedemos com o pagamento?`;
+                    const planoInput = document.getElementById('plano-escolhido');
+                    const nomeInput = document.getElementById('nome');
+                    const emailInput = document.getElementById('email');
+                    const whatsInput = document.getElementById('whatsapp');
+                    const docInput = document.getElementById('documento');
 
-                if (typeof gtag === 'function') {
-                    gtag('event', 'conversion', {
-                        'send_to': 'AW-18516243279/R07MCM_NkJ8dEM_mnf1E',
-                        'value': 1.0,
-                        'currency': 'BRL'
-                    });
-                }
+                    const plano = planoInput ? planoInput.value : 'Software PDV';
+                    const nome = nomeInput ? nomeInput.value : '';
+                    const email = emailInput ? emailInput.value : '';
+                    const whats = whatsInput ? whatsInput.value : '';
+                    const documento = docInput ? docInput.value : '';
+                    
+                    const gclidSalvo = getParameterByName('gclid') || localStorage.getItem('gclid') || 'Não informado';
+                    const numeroEmpresa = "552124103416";
 
-                const mensagemCodificada = encodeURIComponent(mensagem);
-                const urlWhatsApp = `https://wa.me/${numeroEmpresa}?text=${mensagemCodificada}`;
-                
-                fecharModal();
-                window.open(urlWhatsApp, '_blank');
-            });
-        }
+                    const mensagem = `Olá! Gostaria de adquirir o software PDV.\n\n` +
+                                     `*Plano Escolhido:* ${plano}\n` +
+                                     `*Nome:* ${nome}\n` +
+                                     `*E-mail:* ${email}\n` +
+                                     `*WhatsApp:* ${whats}\n` +
+                                     `*CPF/CNPJ:* ${documento}\n` +
+                                     `*Origem (GCLID):* ${gclidSalvo}\n\n` +
+                                     `Como procedemos com o pagamento?`;
+
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-18516243279/R07MCM_NkJ8dEM_mnf1E',
+                            'value': 1.0,
+                            'currency': 'BRL'
+                        });
+                    }
+
+                    const mensagemCodificada = encodeURIComponent(mensagem);
+                    const urlWhatsApp = `https://wa.me/${numeroEmpresa}?text=${mensagemCodificada}`;
+                    
+                    fecharModal();
+                    window.open(urlWhatsApp, '_blank');
+                });
+            }
+        });
     </script>
     
-    <!-- Botão Flutuante do WhatsApp Corrigido -->
+    <!-- Botão Flutuante do WhatsApp -->
     <div id="whatsapp-float">
       <a href="https://wa.me/552124103416?text=Olá!%20Gostaria%20de%20mais%20informações." target="_blank" rel="noopener noreferrer" title="Fale conosco no WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="36" height="36" fill="#ffffff">
